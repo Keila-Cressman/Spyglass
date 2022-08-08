@@ -1,0 +1,66 @@
+
+.stepper-container {
+    border: 1px solid grey;
+    padding: 75px;
+    border-radius: 15px;
+    background-image: url("../../../assets/images/parchment.JPG");
+    opacity: .70;
+    display: flex;
+}
+
+.greeting-container { 
+    padding: 20px;
+    border: 1px solid grey;
+    border-radius: 15px;
+    padding: 100px;
+    box-shadow: 3px 3px 1px grey;
+}
+
+mat-horizontal-stepper {
+    border-radius: 15px;
+    flex-grow: 1;
+}
+
+.greeting-header {
+    display: flex;
+    margin-bottom: 50px;
+}
+
+.text-heading {
+    flex-grow: 3;
+}
+
+.image-heading {
+    flex-grow: 1.5;
+}
+
+.text-heading h1 {
+    font-size: 55px;
+    margin-bottom: 25px;
+}
+
+.text-heading h2 {
+    font-size: 30px;
+    padding-top: 20px;
+    margin-left: 60px;
+}
+
+mat-form-field, .button-container, .savings-plan-container {
+    margin: 25px;
+}
+
+.button-space {
+    float: right;
+}
+
+.button-container {
+    text-align: center;
+}
+
+mat-card {
+    margin-bottom: 30px;
+}
+
+.course-container {
+    padding-top: 40px;
+}

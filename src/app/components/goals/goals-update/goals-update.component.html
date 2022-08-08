@@ -1,0 +1,72 @@
+<div class="update-goals-container">
+  <mat-list>
+    <h1 style="text-align:center">Update Your Goal</h1>
+    <mat-divider></mat-divider>
+  </mat-list>
+<div *ngIf=message class="message-container">
+  <h4>{{message}}</h4>
+</div>
+<div class = "centerAlign">
+    <mat-form-field appearance="fill">
+      <mat-label>Name</mat-label>
+      <input matInput name="name" type ="text" [(ngModel)]="currentGoal.name" required>
+    </mat-form-field>
+    <br>
+    <mat-form-field appearance="fill">
+      <mat-label>Description</mat-label>
+      <input matInput name="description" [(ngModel)]="currentGoal.description" required>
+    </mat-form-field>
+    <br>
+    <mat-form-field appearance="fill">
+        <mat-label>Picture</mat-label>
+        <mat-select [(ngModel)]="currentGoal.picture" name="picture">
+          <mat-option *ngFor="let picture of pictures" [value]="picture.image">
+            <img width="50" height="50" src={{picture.image}}>
+            <span style="margin-left: 30px;">{{picture.value}}</span>
+          </mat-option>
+        </mat-select>
+    </mat-form-field>
+    <br>
+    <mat-form-field appearance="fill">
+      <mat-label>Target Date</mat-label>
+      <input matInput type="date" name="targetDate" 
+        [ngModel]="currentGoal.targetDate | date:'yyyy-MM-dd'" 
+        [ngModelOptions]= "{updateOn:'blur'}"
+        (ngModelChange)="currentGoal.targetDate=$event" required>
+    </mat-form-field>
+    <br>
+    <mat-form-field appearance="fill">
+        <mat-label>Current Amount</mat-label>
+        <span matPrefix>$</span>
+        <input matInput name="currentAmount"  
+          [ngModel]="currentGoal.currentAmount | number : '1.2-2'" 
+          [ngModelOptions]="{updateOn:'blur'}"
+          (ngModelChange)="currentGoal.currentAmount = fixToNumber($event)" required>
+    </mat-form-field>
+    <br>
+    <mat-form-field appearance="fill">
+        <mat-label>Target Amount</mat-label>
+        <span matPrefix>$</span>
+        <input matInput name="targetAmount" 
+          [ngModel]="currentGoal.targetAmount | number : '1.2-2'" 
+          [ngModelOptions]="{updateOn:'blur'}"
+          (ngModelChange)="currentGoal.targetAmount = fixToNumber($event)" required>
+    </mat-form-field>
+    <br>
+      <br>
+    <div class="button-container">
+      <button class="button-space" mat-raised-button color="primary" routerLink='/goals'>
+        <mat-icon>home</mat-icon>Back
+      </button>
+      <button mat-raised-button color="primary" 
+      [disabled]="currentGoal.name === '' || currentGoal.description === ''
+                || currentGoal.currentAmount <= 0 || currentGoal.targetAmount <= 0 "
+        (click)="updateGoal()">
+        <mat-icon>assignment_turned_in</mat-icon>Update
+      </button>
+    </div>
+  </div>
+</div>
+
+  
+  

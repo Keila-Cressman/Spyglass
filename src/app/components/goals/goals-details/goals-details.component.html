@@ -1,0 +1,52 @@
+
+<div class="goals-details-container"> 
+    <mat-list>
+        <h1>Details for {{goal.name}}</h1>
+        <mat-divider></mat-divider>
+    </mat-list>
+    <mat-card>
+        <mat-card-header>
+            <mat-card-title>{{goal.name}}</mat-card-title>
+        </mat-card-header>
+        <img mat-card-image src="{{goal.picture}}" height="200px">
+        <mat-card-content>
+            <mat-list>
+                <mat-divider></mat-divider>
+                <mat-list-item>
+                    <span class="list-title">Description: </span>
+                    <span class="list-detail">{{goal.description}}</span>
+                </mat-list-item>
+                <mat-divider></mat-divider>
+                <mat-list-item>
+                    <span class="list-title">Target Date: </span>
+                    <span class="list-detail">{{goal.targetDate | date}}</span>
+                </mat-list-item>
+                <mat-divider></mat-divider>
+                <mat-list-item>
+                    <span class="list-title">Amount Saved: </span>
+                    <span class="list-detail">{{goal.currentAmount | currency:'USD'}}</span>
+                </mat-list-item>
+                <mat-divider></mat-divider>
+                <mat-list-item>
+                    <span class="list-title">Target Amount: </span>
+                    <span class="list-detail">{{goal.targetAmount | currency:'USD'}}</span>
+                </mat-list-item>
+                <mat-divider></mat-divider>
+                <mat-list-item style="margin-top: 0px; margin-bottom: 0px;">
+                    <mat-progress-bar mode="determinate" value="{{displayProgress(goal.currentAmount, goal.targetAmount)}}"></mat-progress-bar>
+                </mat-list-item>
+                <mat-divider></mat-divider>
+            </mat-list>
+        </mat-card-content>
+        <mat-card-actions>
+            <button mat-raised-button color="primary" routerLink="/goals">
+                <mat-icon>home</mat-icon>
+                Back
+            </button>
+            <button mat-raised-button color="primary" routerLink="/goals/update/{{goal.id}}">
+                <mat-icon>edit</mat-icon>
+                Edit Goal
+            </button>
+        </mat-card-actions>
+    </mat-card>
+</div>
